@@ -1,6 +1,15 @@
 # mongo-replicaset
 build mongo replica set
 
+* 运行相关 （针对注意事项的问题）
+  - 首次运行 将 docker-compose.yml 中的注释去掉
+  ```
+   # environment:
+   #   MONGO_INITDB_ROOT_USERNAME: root
+   #   MONGO_INITDB_ROOT_PASSWORD: 123456
+  ```
+ - 启动后，再将恢复原样，重启容器
+
 * 相关指令
 
 ```
