@@ -1,0 +1,52 @@
+version: '3.1'
+
+services:
+
+  mongo1:
+    image: mongo:4.2
+    restart: always
+    container_name: m1
+    #command: mongod -f /etc/mongo/mongod.conf --auth --replSet rstest 
+    command: -f /etc/mongo/mongod.conf --replSet rstest 
+   # environment:
+   #   MONGO_INITDB_ROOT_USERNAME: root
+   #   MONGO_INITDB_ROOT_PASSWORD: 123456
+    ports:
+      - 27017:27017
+    volumes:
+      - /data/mongo/conf/mongod.conf:/etc/mongo/mongod.conf
+      - /data/mongo/conf/keyfile:/var/lib/mongod/keyfile
+      - /data/mongo/db/m1:/var/lib/mongod/data
+      - /data/mongo/log/m1:/var/log/mongodb
+  mongo2:
+    image: mongo:4.2
+    restart: always
+    container_name: m2
+    #command: mongod -f /etc/mongo/mongod.conf --auth --replSet rstest 
+    command: mongod -f /etc/mongo/mongod.conf --replSet rstest 
+   # environment:
+   #   MONGO_INITDB_ROOT_USERNAME: root
+   #   MONGO_INITDB_ROOT_PASSWORD: 123456
+    ports:
+      - 27018:27017
+    volumes:
+      - /data/mongo/conf/mongod.conf:/etc/mongo/mongod.conf
+      - /data/mongo/conf/keyfile:/var/lib/mongod/keyfile
+      - /data/mongo/db/m2:/var/lib/mongod/data
+      - /data/mongo/log/m2:/var/log/mongodb
+  mongo3:
+    image: mongo:4.2
+    restart: always
+    container_name: m3
+    #command: mongod -f /etc/mongo/mongod.conf --auth --replSet rstest 
+    command: mongod -f /etc/mongo/mongod.conf --replSet rstest 
+   # environment:
+   #   MONGO_INITDB_ROOT_USERNAME: root
+   #   MONGO_INITDB_ROOT_PASSWORD: 123456
+    ports:
+      - 27019:27017
+    volumes:
+      - /data/mongo/conf/mongod.conf:/etc/mongo/mongod.conf
+      - /data/mongo/conf/keyfile:/var/lib/mongod/keyfile
+      - /data/mongo/db/m3:/var/lib/mongod/data
+      - /data/mongo/log/m3:/var/log/mongodb
