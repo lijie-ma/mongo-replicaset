@@ -36,5 +36,5 @@ mongo "mongodb://192.168.32.137:27017,192.168.32.137:27018,192.168.32.137:27019/
 * 注意事项
     - https://github.com/docker-library/mongo/issues/329 【针对上面的yml】
         - yml 中 environment 引起的问题
-* 潜在的问题
+* 潜在的问题（偶现）
   - https://jira.mongodb.org/browse/SERVER-37724
