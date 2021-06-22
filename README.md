@@ -1,4 +1,4 @@
-# mongo-replicaset
+# Mongo Replication
 build mongo replica set
 
 * 运行相关 （针对注意事项的问题）
