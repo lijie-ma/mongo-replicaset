@@ -1,5 +1,5 @@
 # Mongo Replication
-build mongo replica set
+   build mongo replica set
 
 * 运行相关 （针对注意事项的问题）
   - 首次运行 将 docker-compose.yml 中的注释去掉
@@ -10,7 +10,8 @@ build mongo replica set
   ```
  - 启动后，再将恢复原样，重启容器
 
-* 相关指令
+
+# 相关指令
 
 ```
 // 集群搭建后进行初始
