@@ -1,5 +1,5 @@
 # Mongo Replication
-   build mongo replica set
+   搭建 mongo replica set 环境
 
 * 运行相关 （针对注意事项的问题）
   - 首次运行 将 docker-compose.yml 中的注释去掉
