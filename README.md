@@ -1,4 +1,4 @@
-# Mongo Replication
+## Mongo Replication
    搭建 mongo replica set 环境
 
 * 第一步 创建安装目录，示例使用docker-compose.yml 中的目录
@@ -24,21 +24,33 @@ chmod 0400 /data/mongo/conf/keyfile
    #   MONGO_INITDB_ROOT_USERNAME: root
    #   MONGO_INITDB_ROOT_PASSWORD: 123456
  ```
-* 第四步 首次运行
+* 第四步 运行
  ```
+   # 首次运行
    docker-compose up -d
- 
+   
+   # 查看容器
+   docker ps
+   
+   # 此时重启容器
+   docker-compose restart && docker ps
  ```
-
-* 运行相关 （针对注意事项的问题）
-  - 首次运行 将 docker-compose.yml 中的注释去掉
+ * 第五步 错误修复
   ```
-   # environment:
-   #   MONGO_INITDB_ROOT_USERNAME: root
-   #   MONGO_INITDB_ROOT_PASSWORD: 123456
-  ```
- - 启动后，再将恢复原样，重启容器
-
+   # 此时重启容器
+   docker-compose restart && docker ps
+   # 在status 栏会看到类似的错误“Restarting (1) Less than a second ago” 
+   # 通过 docker logs -f m1 看到详细日志
+        # “QUERY    [js] uncaught exception: Error: couldn't add user: command createUser requires authentication :”
+   # 此时还原 第三步 对docker-compose.yml 修改即可
+   # 即 注释掉文件中的
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 123456
+   # 再次执行
+    docker-compose up -d
+   # 错误已被修正
+ ```
 
 # 相关指令
 
