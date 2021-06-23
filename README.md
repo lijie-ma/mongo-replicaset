@@ -35,7 +35,7 @@ chmod 0400 /data/mongo/conf/keyfile
    # 此时重启容器
    docker-compose restart && docker ps
  ```
- * 第五步 错误修复
+ * 第五步 错误修复 【原理参考 问题答疑】
   ```
    # 此时重启容器
    docker-compose restart && docker ps
@@ -51,30 +51,33 @@ chmod 0400 /data/mongo/conf/keyfile
     docker-compose up -d
    # 错误已被修正
  ```
-
-# 相关指令
-
-```
-// 集群搭建后进行初始
+ * 第六步 组建 replica set
+ ```
+ #进入db
+ mongo --port 27017 -u root -p 123456
+ 
+ // 集群搭建后进行初始
 rs.initiate({
   _id:"rstest", // replSet指定的名称
   members:[{
     _id:0,
-    host:"192.168.32.137:27017" // 主节点ip与端口
+    host:"192.168.32.137:27017" // 主节点ip与端口   192.168.32.137 为我本机ip
   }]
 })
 
+// 冗余节点
 rs.add("192.168.32.137:27018");
 
 // arbiter 不存放数据
 rs.addArb("192.168.32.137:27019");
 
-// mongo shell demo
+# 退出，重新连接
 mongo "mongodb://192.168.32.137:27017,192.168.32.137:27018,192.168.32.137:27019/?replicaSet=rstest"
 
-```
 
-* 注意事项
+ ```
+
+* 问题答疑
     - https://github.com/docker-library/mongo/issues/329 【针对上面的yml】
         - yml 中 environment 引起的问题
 * 潜在的问题（偶现）
