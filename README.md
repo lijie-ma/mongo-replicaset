@@ -1,6 +1,16 @@
 # Mongo Replication
    搭建 mongo replica set 环境
 
+* 第一步 创建安装目录，示例使用docker-compose.yml 中的目录
+```
+mkdir -p /data/mongo/conf /data/mongo/log /data/mongo/db
+mkdir /data/mongo/log/m1 /data/mongo/log/m2 /data/mongo/log/m3
+chmod a+w /data/mongo/log/m1 /data/mongo/log/m2 /data/mongo/log/m3
+
+mkdir /data/mongo/db/m1 /data/mongo/db/m2 /data/mongo/db/m3
+chmod a+w /data/mongo/db/m1 /data/mongo/db/m2 /data/mongo/db/m3
+
+```
 * 运行相关 （针对注意事项的问题）
   - 首次运行 将 docker-compose.yml 中的注释去掉
   ```
