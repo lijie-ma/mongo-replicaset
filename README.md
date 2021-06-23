@@ -11,6 +11,14 @@ mkdir /data/mongo/db/m1 /data/mongo/db/m2 /data/mongo/db/m3
 chmod a+w /data/mongo/db/m1 /data/mongo/db/m2 /data/mongo/db/m3
 
 ```
+* 第二步 复制配置文件，设置运行文件权限
+```
+cp conf/mongod.conf conf/keyfile /data/mongo/conf
+# conf/keyfile 要求400 或者600的权限
+chown polkitd:polkitd /data/mongo/conf/keyfile 
+chmod 0400 /data/mongo/conf/keyfile
+```
+
 * 运行相关 （针对注意事项的问题）
   - 首次运行 将 docker-compose.yml 中的注释去掉
   ```
